@@ -4,7 +4,7 @@
 
 Na disciplina **“Metodologias Ágeis para Desenvolvimento de Software”**, são abordadas práticas e princípios de abordagens iterativas e incrementais, que valorizam a colaboração, a entrega contínua e a adaptação a mudanças, com foco no sucesso dos projetos. Seguindo essa proposta, o sistema desenvolvido adota a metodologia ágil criada em sala, denominada "FlexDev", utilizando técnicas e ferramentas alinhadas à abordagem sorteada.
 
-Como forma avaliativa da disciplina, foi elaborado o projeto de **"Sistema de Gerenciamento de Bebidas – Kanbar"**, como forma avaliativa para a disciplina de "Metodologias Ágeis para Desenvolvimento de Software" ministrada pelo professor Bruno Borges da Silva.
+Como forma avaliativa da disciplina, foi elaborado o projeto de **"Catálogo de Drinks – Kanbar"**, como forma avaliativa para a disciplina de "Metodologias Ágeis para Desenvolvimento de Software" ministrada pelo professor Bruno Borges da Silva.
 
 
 ## 👥 Equipe
