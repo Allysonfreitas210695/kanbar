@@ -1,8 +1,8 @@
 import {
   pgTable,
+  uuid,
   text,
   timestamp,
-  uuid,
   doublePrecision,
 } from "drizzle-orm/pg-core";
 
@@ -15,5 +15,5 @@ export const drinks = pgTable("drinks", {
   difficulty: text(),
   estimatedValue: doublePrecision(),
   restrictions: text(),
-  createdAt: timestamp().defaultNow().notNull(),
+  createdAt: timestamp({ mode: "date" }).defaultNow().notNull(),
 });
