@@ -2,22 +2,23 @@ import { reset, seed } from "drizzle-seed";
 import { db, sql } from "./connection.ts";
 import { schema } from "./schema/index.ts";
 
-await reset(db, schema);
+const seedSchema = {
+  users: schema.users,
+  categories: schema.categories,
+  drinks: schema.drinks,
+  games: schema.games,
+  locations: schema.locations,
+};
 
-await seed(db, schema).refine((f) => {
+await reset(db, seedSchema);
+
+await seed(db, seedSchema).refine((f) => {
   return {
-    users: {
-      count: 5,
-    },
-    drinks: {
-      count: 10,
-    },
-    games: {
-      count: 8,
-    },
-    locations: {
-      count: 6,
-    },
+    users: { count: 10 },
+    categories: { count: 10 },
+    drinks: { count: 10 },
+    games: { count: 10 },
+    locations: { count: 10 },
   };
 });
 
