@@ -1,5 +1,4 @@
-import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import type { ZodTypeProvider } from "fastify-type-provider-zod";
+import type { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod/v4";
 
 import { DrizzleRepositories } from "../../../repositories/drizzle/drizzle-repositories.ts";

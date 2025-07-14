@@ -1,5 +1,6 @@
-import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import type { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod/v4";
+
 import { DrizzleRepositories } from "../../../repositories/drizzle/drizzle-repositories.ts";
 import { AuthenticateUserUseCase } from "../../../use-cases/authenticate-user-use-case.ts";
 import { InvalidCredentialsError } from "../../../use-cases/errors/invalid-credentials-error.ts";

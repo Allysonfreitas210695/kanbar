@@ -1,7 +1,5 @@
-import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import type { ZodTypeProvider } from "fastify-type-provider-zod";
-import { z } from "zod";
-import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
+import type { FastifyReply, FastifyRequest } from "fastify";
+
 import { DrizzleGamesRepository } from "../../../repositories/drizzle/drizzle-games-repository.ts";
 import { ListActiveGamesUseCase } from "../../../use-cases/list-active-games-use-case.ts";
 

@@ -1,6 +1,4 @@
-import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import type { ZodTypeProvider } from "fastify-type-provider-zod";
-import { z } from "zod";
+import type { FastifyReply, FastifyRequest } from "fastify";
 
 import { DrizzleDrinksRepository } from "../../../repositories/drizzle/drizzle-drinks-repository.ts";
 import { GetDrinkByIdUseCase } from "../../../use-cases/get-drink-by-id-use-case.ts";

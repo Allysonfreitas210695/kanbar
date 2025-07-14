@@ -1,6 +1,6 @@
-import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import type { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
+
 import { DrizzleDrinksRepository } from "../../../repositories/drizzle/drizzle-drinks-repository.ts";
 import { DrizzleFavoriteDrinksRepository } from "../../../repositories/drizzle/drizzle-favorite-drinks-repository.ts";
 import { DrinkNotFoundError } from "../../../use-cases/errors/drink-not-found-error.ts";

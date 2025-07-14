@@ -1,9 +1,11 @@
 import type { FastifyInstance } from "fastify";
+import z from "zod/v4";
+
 import { gamesByActive } from "./games-by-active.ts";
 import { gamesFavorite } from "./games-favorite.ts";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
+
 import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
-import z from "zod/v4";
 
 export function gamesRoutes(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(

@@ -1,9 +1,11 @@
 import type { FastifyInstance } from "fastify";
+import { ZodTypeProvider } from "fastify-type-provider-zod";
+import z from "zod/v4";
+
 import { getAllDrinks } from "./drinks-all.ts";
 import { getDrinkById } from "./drinks-by-id.ts";
 import { bodySchema, favoriteDrink } from "./drinks-favorite.ts";
-import z from "zod/v4";
-import { ZodTypeProvider } from "fastify-type-provider-zod";
+
 import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
 
 export function drinksRoutes(app: FastifyInstance) {
