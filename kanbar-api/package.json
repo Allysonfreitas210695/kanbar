@@ -4,8 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "tsx --env-file .env src/server.ts",
     "dev": "tsx watch --env-file .env src/server.ts",
+    "build": "tsup src/server.ts --out-dir dist --format cjs --clean",
+    "start": "node -r dotenv/config dist/server.cjs",
+    "postinstall": "npm run build",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx --env-file .env src/db/seed.ts"
@@ -29,10 +31,12 @@
     "@fastify/swagger": "^9.5.1",
     "@fastify/swagger-ui": "^5.2.3",
     "bcryptjs": "^3.0.2",
+    "dotenv": "^17.2.0",
     "drizzle-orm": "0.44.2",
     "fastify": "5.4.0",
     "fastify-type-provider-zod": "5.0.1",
     "postgres": "3.4.7",
+    "tsup": "^8.5.0",
     "zod": "^4.0.5"
   }
 }
