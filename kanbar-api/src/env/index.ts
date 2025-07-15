@@ -19,8 +19,8 @@ const envSchema = z.object({
     message: "JWT_SECRET must be at least 32 characters long",
   }),
   JWT_EXPIRES_IN: z.string().default("7d"),
-  FRONTEND_URL: z.string().url().default("*"),
-  API_BASE_URL: z.string().url().optional(),
+  FRONTEND_URL: z.string().default("*"),
+  API_BASE_URL: z.url().optional(),
 });
 
 export const env = envSchema.parse(process.env);
