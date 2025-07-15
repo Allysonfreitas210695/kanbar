@@ -7,6 +7,7 @@ import { bodyFavoriteSchema, favoriteDrink } from "./drinks-favorite.ts";
 import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
 import type { fastifyZodInstance } from "../../../@types/fastifyZodInstance.ts";
 import { bodyRegisterSchema, registerDrink } from "./register.ts";
+import { removeDrink } from "./drink-remove.ts";
 
 export function drinksRoutes(app: fastifyZodInstance) {
   app.get(
@@ -101,5 +102,23 @@ export function drinksRoutes(app: fastifyZodInstance) {
       },
     },
     favoriteDrink
+  );
+
+  app.delete(
+    "/drinks/:id",
+    {
+      preValidation: [verifyJwt],
+      schema: {
+        params: z.object({
+          id: z.string().uuid(),
+        }),
+        response: {
+          204: z.null(),
+        },
+        tags: ["Drinks"],
+        summary: "Remove um drink por ID",
+      },
+    },
+    removeDrink
   );
 }
