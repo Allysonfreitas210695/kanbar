@@ -10,4 +10,7 @@ export interface LocationWithDrinks extends Location {
 export interface LocationRepository {
   findAllWithDrinks(): Promise<LocationWithDrinks[]>;
   findById(id: string): Promise<LocationWithDrinks | null>;
+  addFavoriteLocation(userId: string, locationId: string): Promise<void>;
+  removeLocation(userId: string, locationId: string): Promise<void>;
+  isFavoritedLocation(userId: string, locationId: string): Promise<boolean>;
 }

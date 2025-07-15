@@ -1,9 +1,14 @@
-import { FastifyInstance } from "fastify";
 import z from "zod/v4";
 
 import { locationsAll } from "../locations/locations-all.ts";
+import type { fastifyZodInstance } from "../../../@types/fastifyZodInstance.ts";
+import {
+  locationFavorite,
+  locationFavoriteSchema,
+} from "./locations-favorite.ts";
+import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
 
-export function locationsRoutes(app: FastifyInstance) {
+export function locationsRoutes(app: fastifyZodInstance) {
   app.get(
     "/locations",
     {
@@ -33,5 +38,24 @@ export function locationsRoutes(app: FastifyInstance) {
       },
     },
     locationsAll
+  );
+
+  app.post(
+    "/locations/favorite",
+    {
+      onRequest: [verifyJwt],
+      schema: {
+        tags: ["Locations"],
+        summary: "Adiciona ou remove um local dos favoritos",
+        body: locationFavoriteSchema,
+        response: {
+          204: z.null(),
+          401: z.object({
+            error: z.string(),
+          }),
+        },
+      },
+    },
+    locationFavorite
   );
 }

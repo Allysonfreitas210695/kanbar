@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 
 import { DrizzleDrinksRepository } from "../../../repositories/drizzle/drizzle-drinks-repository.ts";
-import { GetDrinkByIdUseCase } from "../../../use-cases/get-drink-by-id-use-case.ts";
+import { GetDrinkByIdUseCase } from "../../../use-cases/drinks/get-drink-by-id-use-case.ts";
 
 export async function getDrinkById(
   request: FastifyRequest,
@@ -18,5 +18,12 @@ export async function getDrinkById(
     return reply.status(404).send({ message: "Drink not found" });
   }
 
-  return reply.send({ drink: { id: drink.id, name: drink.name } });
+  return reply.send({
+    drink: {
+      id: drink.id,
+      name: drink.name,
+      description: drink.description,
+      imageUrl: drink.image,
+    },
+  });
 }

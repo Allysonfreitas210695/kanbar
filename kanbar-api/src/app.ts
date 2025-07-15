@@ -7,20 +7,23 @@ import {
   jsonSchemaTransform,
   serializerCompiler,
   validatorCompiler,
-  type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { env } from "./env/index.ts";
 import { errorHandler } from "./error-handler.ts";
 import { drinksRoutes } from "./http/controller/drinks/routes.ts";
 import { gamesRoutes } from "./http/controller/games/routes.ts";
 import { usersRoutes } from "./http/controller/users/routes.ts";
+import { locationsRoutes } from "./http/controller/locations/routes.ts";
 
 export const app = fastify({
   logger: true,
 });
 
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
+
 app.register(fastifyCors, {
-  origin: env.FRONTEND_URL,
+  origin: "*",
 });
 
 app.register(fastifyJwt, {
@@ -46,11 +49,13 @@ app.register(fastifySwaggerUI, {
   routePrefix: "/docs",
 });
 
-app.setValidatorCompiler(validatorCompiler);
-app.setSerializerCompiler(serializerCompiler);
+app.get("/teste", () => {
+  return "OK";
+});
 
-usersRoutes(app);
-drinksRoutes(app);
-gamesRoutes(app);
+app.register(usersRoutes);
+app.register(drinksRoutes);
+app.register(gamesRoutes);
+app.register(locationsRoutes);
 
 app.setErrorHandler(errorHandler);

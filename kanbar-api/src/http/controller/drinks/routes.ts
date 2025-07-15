@@ -1,5 +1,3 @@
-import type { FastifyInstance } from "fastify";
-import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod/v4";
 
 import { getAllDrinks } from "./drinks-all.ts";
@@ -7,9 +5,10 @@ import { getDrinkById } from "./drinks-by-id.ts";
 import { bodySchema, favoriteDrink } from "./drinks-favorite.ts";
 
 import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
+import type { fastifyZodInstance } from "../../../@types/fastifyZodInstance.ts";
 
-export function drinksRoutes(app: FastifyInstance) {
-  app.withTypeProvider<ZodTypeProvider>().get(
+export function drinksRoutes(app: fastifyZodInstance) {
+  app.get(
     "/drinks",
     {
       schema: {
@@ -32,7 +31,7 @@ export function drinksRoutes(app: FastifyInstance) {
     getAllDrinks
   );
 
-  app.withTypeProvider<ZodTypeProvider>().get(
+  app.get(
     "/drinks/:id",
     {
       schema: {
@@ -46,6 +45,8 @@ export function drinksRoutes(app: FastifyInstance) {
             drink: z.object({
               id: z.string(),
               name: z.string(),
+              description: z.string(),
+              imageUrl: z.string(),
             }),
           }),
           404: z.object({

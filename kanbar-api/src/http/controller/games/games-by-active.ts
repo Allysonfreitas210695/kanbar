@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 
 import { DrizzleGamesRepository } from "../../../repositories/drizzle/drizzle-games-repository.ts";
-import { ListActiveGamesUseCase } from "../../../use-cases/list-active-games-use-case.ts";
+import { ListActiveGamesUseCase } from "../../../use-cases/games/list-active-games-use-case.ts";
 
 export async function gamesByActive(
   request: FastifyRequest,

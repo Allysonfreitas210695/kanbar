@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 
 import { DrizzleDrinksRepository } from "../../../repositories/drizzle/drizzle-drinks-repository.ts";
-import { GetAllDrinksUseCase } from "../../../use-cases/get-all-drinks-use-case.ts";
+import { GetAllDrinksUseCase } from "../../../use-cases/drinks/get-all-drinks-use-case.ts";
 
 export async function getAllDrinks(app: FastifyRequest, reply: FastifyReply) {
   const repository = new DrizzleDrinksRepository();

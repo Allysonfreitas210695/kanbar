@@ -1,4 +1,5 @@
 import { pgTable, uuid, timestamp, primaryKey } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 import { locations } from "./locations.ts";
 import { users } from "./users.ts";
 
@@ -17,3 +18,14 @@ export const userFavorites = pgTable(
     pk: primaryKey({ columns: [table.userId, table.locationId] }),
   })
 );
+
+export const userFavoritesRelations = relations(userFavorites, ({ one }) => ({
+  user: one(users, {
+    fields: [userFavorites.userId],
+    references: [users.id],
+  }),
+  location: one(locations, {
+    fields: [userFavorites.locationId],
+    references: [locations.id],
+  }),
+}));

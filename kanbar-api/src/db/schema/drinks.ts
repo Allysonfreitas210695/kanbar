@@ -1,12 +1,14 @@
+import { relations } from "drizzle-orm";
 import {
   doublePrecision,
   pgTable,
   text,
   timestamp,
   uuid,
-} from 'drizzle-orm/pg-core'
+} from "drizzle-orm/pg-core";
+import { favoriteDrinks } from "./favoriteDrinks.ts";
 
-export const drinks = pgTable('drinks', {
+export const drinks = pgTable("drinks", {
   id: uuid().primaryKey().defaultRandom(),
   name: text().notNull(),
   description: text(),
@@ -15,8 +17,12 @@ export const drinks = pgTable('drinks', {
   difficulty: text(),
   estimatedValue: doublePrecision(),
   restrictions: text(),
-  createdAt: timestamp({ mode: 'date' }).defaultNow().notNull(),
-})
+  createdAt: timestamp({ mode: "date" }).defaultNow().notNull(),
+});
 
-export type Drink = typeof drinks.$inferSelect
-export type NewDrink = typeof drinks.$inferInsert
+export const drinksRelations = relations(drinks, ({ many }) => ({
+  favoriteDrinks: many(favoriteDrinks),
+}));
+
+export type Drink = typeof drinks.$inferSelect;
+export type NewDrink = typeof drinks.$inferInsert;

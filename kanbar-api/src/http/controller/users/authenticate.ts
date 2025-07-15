@@ -1,9 +1,9 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod/v4";
 
-import { DrizzleRepositories } from "../../../repositories/drizzle/drizzle-repositories.ts";
-import { AuthenticateUserUseCase } from "../../../use-cases/authenticate-user-use-case.ts";
+import { AuthenticateUserUseCase } from "../../../use-cases/users/authenticate-user-use-case.ts";
 import { InvalidCredentialsError } from "../../../use-cases/errors/invalid-credentials-error.ts";
+import { DrizzleUsersRepositories } from "../../../repositories/drizzle/drizzle-users-repositories.ts";
 
 export const schemaSessionBody = z.object({
   email: z.email(),
@@ -14,14 +14,15 @@ export async function authenticate(
   reply: FastifyReply
 ) {
   const { email, password } = schemaSessionBody.parse(request.body);
+  console.log("kdnjdnd");
 
-  const repository = new DrizzleRepositories();
+  const repository = new DrizzleUsersRepositories();
   const useCase = new AuthenticateUserUseCase(repository);
 
   try {
     const { user } = await useCase.execute({ email, password });
 
-    const token = reply.jwtSign({
+    const token = await reply.jwtSign({
       sub: user.id,
       email: user.email,
     });

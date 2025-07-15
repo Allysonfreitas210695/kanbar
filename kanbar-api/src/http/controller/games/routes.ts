@@ -1,14 +1,13 @@
-import type { FastifyInstance } from "fastify";
 import z from "zod/v4";
 
 import { gamesByActive } from "./games-by-active.ts";
 import { gamesFavorite } from "./games-favorite.ts";
-import { ZodTypeProvider } from "fastify-type-provider-zod";
 
 import { verifyJwt } from "../../../middlewares/verify-jwt.ts";
+import type { fastifyZodInstance } from "../../../@types/fastifyZodInstance.ts";
 
-export function gamesRoutes(app: FastifyInstance) {
-  app.withTypeProvider<ZodTypeProvider>().get(
+export function gamesRoutes(app: fastifyZodInstance) {
+  app.get(
     "/games",
     {
       onRequest: [verifyJwt],
@@ -33,7 +32,7 @@ export function gamesRoutes(app: FastifyInstance) {
     gamesByActive
   );
 
-  app.withTypeProvider<ZodTypeProvider>().post(
+  app.post(
     "/games/favorite",
     {
       onRequest: [verifyJwt],
@@ -46,8 +45,6 @@ export function gamesRoutes(app: FastifyInstance) {
         }),
         response: {
           204: z.null(),
-          404: z.object({ error: z.string() }),
-          500: z.object({ error: z.string() }),
         },
       },
     },
