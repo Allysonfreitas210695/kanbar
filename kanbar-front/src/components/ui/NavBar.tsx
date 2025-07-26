@@ -14,12 +14,15 @@ function NavBar() {
   ];
 
   return (
-    <nav className="absolute top-0 left-0 z-50 w-full flex items-center justify-between px-15 py-[16px] text-white">
-      <div className="w-[140px] h-[40] cursor-pointer" onClick={() => navigate('/')}>
-        <img src={logo} alt="Logo do Kanbar" className="w-full h-auto" />
+    <nav className="w-full flex items-center justify-between px-6 py-4 text-white ">
+      <div
+        className="flex items-center w-[140px] h-[40px] cursor-pointer mx-3"
+        onClick={() => navigate('/')}
+      >
+        <img src={logo} alt="Logo do Kanbar" className="h-full object-contain" />
       </div>
 
-      <ul className="hidden md:flex space-x-10 font-bold text-xl tracking-wider">
+      <ul className="hidden md:flex items-center space-x-10 font-bold text-xl tracking-wider">
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
           return (
@@ -38,7 +41,7 @@ function NavBar() {
         })}
       </ul>
 
-      <div className=" md:flex items-center space-x-2">
+      <div className="flex items-center space-x-2 mx-3 ">
         <User size={30} className="text-white" />
       </div>
     </nav>
