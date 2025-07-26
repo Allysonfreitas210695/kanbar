@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, User } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import NavBar from '@/components/ui/NavBar';
 import mojitoGlass from '../../public/imgs/mojito-glass.png';
 import highballGlass from '../../public/imgs/highball-glass.png';
@@ -55,15 +54,6 @@ function Home() {
     }, 150);
   };
 
-  const prevDrink = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentDrink((prev) => (prev - 1 + drinks.length) % drinks.length);
-      setIsTransitioning(false);
-    }, 150);
-  };
-
   const goToDrink = (index: any) => {
     if (index === currentDrink || isTransitioning) return;
     setIsTransitioning(true);
@@ -83,64 +73,57 @@ function Home() {
       <NavBar />
 
       <div className="relative z-10 flex items-center min-h-[calc(100vh-120px)] px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto">
-          {/* Text Content - Left Side */}
-          <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <h1
-              className={`text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-wider mb-6 transition-all duration-500 ${
+        <div className="flex flex-col items-center justify-between w-full max-w-7xl mx-auto">
+          {/* Text Content - Centered with 800px width */}
+          <div className="flex flex-col items-center w-full mb-8 md:mb-0">
+            <h2
+              className={`w-[800px] h-[120px] text-center text-8xl font-black text-white tracking-wider mb-6 transition-all duration-500 ${
                 isTransitioning ? 'opacity-70' : 'opacity-100'
               }`}
-              style={{ lineHeight: '0.9' }}
             >
               {current.name}
-            </h1>
-            
+            </h2>
+
             <div
-              className={`transition-all duration-500 ${
+              className={`transition-all duration-500 max-w-[800px] ml-16 ${
                 isTransitioning ? 'opacity-0' : 'opacity-100'
               }`}
             >
-              <p className="text-white/90 text-base leading-relaxed mb-6">
+              <p className="text-white/90 text-sm text-left leading-relaxed mb-6 ">
                 {current.description}
               </p>
 
-              <div className="flex items-center space-x-6 text-white/80">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm font-medium">Pref.:</span>
+              <div className="flex items-center justify-start space-x-6 text-white/80">
+                <div className="flex items-center space-x-2"> 
                   <span className="text-lg">{current.price}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-sm font-medium">{current.difficulty}</span>
+                  <span className="text-sm font-medium">
+                    {current.difficulty}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Glass Image - Right Side */}
-          <div className="md:w-1/2 flex justify-center">
-            <img
-              src={current.glass}
-              alt={current.name}
-              className={`w-64 md:w-80 lg:w-96 transition-opacity duration-500 ${
-                isTransitioning ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
+        <div className="absolute bottom-12 w-full flex justify-center">
+          <div className="w-[800px] flex justify-center space-x-3">
+            {drinks.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => goToDrink(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                  index === currentDrink
+                    ? 'bg-white scale-110'
+                    : 'bg-white/40 hover:bg-white/60'
+                }`}
+              ></div>
+            ))}
           </div>
         </div>
-
-        {/* Pagination Dots */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-3">
-          {drinks.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToDrink(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentDrink ? 'bg-white scale-110' : 'bg-white/40 hover:bg-white/60'
-              }`}
-            />
-          ))}
-        </div>
       </div>
+
     </div>
   );
 }
