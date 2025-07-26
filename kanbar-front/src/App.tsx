@@ -1,6 +1,8 @@
-import './App.css';
+  
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Button } from './components/ui/Button';
+import Home from './pages/Home';
+
 function App() {
   return (
     <>
@@ -9,8 +11,30 @@ function App() {
           <Route
             path="/"
             element={
+              < Home/>
+            }
+          />
+                    <Route
+            path="/drinks"
+            element={
               <h1 className="text-white">
-                <Button>Home</Button>
+                <Button>drinks</Button>
+              </h1>
+            }
+          />
+                    <Route
+            path="/jogos"
+            element={
+              <h1 className="text-white">
+                <Button>jogos</Button>
+              </h1>
+            }
+          />
+                    <Route
+            path="/locais"
+            element={
+              <h1 className="text-white">
+                <Button>locais</Button>
               </h1>
             }
           />
