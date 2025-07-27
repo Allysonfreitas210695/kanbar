@@ -4,6 +4,7 @@ import SearchBarJogos from '@/components/ui/SearchBarJogos';
 import { useEffect, useState } from 'react';
 import Game from '@/types/Game';
 import CardGame from '@/components/ui/CardJogos';
+
 const mockJogos: Game[] = [
   {
     id: 1,
@@ -77,7 +78,6 @@ function Jogos() {
       >
         <NavBar />
 
-        {/* Container para centralizar o SearchBar */}
         <div className="flex-1 flex items-end justify-center pb-8">
           <SearchBarJogos />
         </div>
