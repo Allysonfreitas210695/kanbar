@@ -1,6 +1,6 @@
 import { Drink } from "@/types/Drink";
 import drinkDefault from "../../../public/imgs/drink-default.png";
-
+import { ChartNoAxesColumnIncreasing } from "lucide-react";
 interface CardDrinkProps {
   drink: Drink;
 }
@@ -20,11 +20,11 @@ const getDifficultyColor = (difficulty: string) => {
 
 export default function CardDrink({ drink }: CardDrinkProps) {
   return (
-    <div className="border rounded-xl shadow-sm p-4 flex flex-col items-center hover:shadow-lg transition">
+    <div className="bg-[#f1f1f1] w-[300px] h-[400px] rounded-xl shadow-lg p-4 flex flex-col items-center transition-transform duration-200 hover:scale-105 cursor-pointer mx-auto">
       <img
-        src={drink.image || drinkDefault}
-        alt={drink.name}
-        className="h-40 object-contain mb-4"
+      src={drink.image || drinkDefault}
+      alt={drink.name}
+      className="h-40 object-contain mb-4"
       />
       <h2 className="text-xl font-semibold text-center">{drink.name}</h2>
       <p className="text-sm text-gray-600 text-center my-2">
@@ -34,7 +34,7 @@ export default function CardDrink({ drink }: CardDrinkProps) {
         <span
           className={`text-sm font-semibold ${getDifficultyColor(drink.difficulty)}`}
         >
-          {drink.difficulty}
+          <ChartNoAxesColumnIncreasing />{drink.difficulty}
         </span>
         <span className="text-sm text-gray-800">
           {"$".repeat(drink.price)}
