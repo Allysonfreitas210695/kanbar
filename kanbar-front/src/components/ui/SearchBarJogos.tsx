@@ -11,7 +11,7 @@ function SearchBarJogos() {
       <input
         className="bg-[#FAF9F6] w-full py-2 px-4 pl-28 pr-12 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-bluring-blue-500 text-gray-500"
         type="search"
-        placeholder="Buscar receitas de drinks"
+        placeholder="Buscar jogos"
       />
 
       <div className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-600 hover:text-gray-800">
