@@ -1,26 +1,44 @@
-import { useEffect, useState } from "react";
-import NavBar from "@/components/ui/NavBar";
-import SearchBarDrink from "@/components/ui/SearchBarDrink";
-import CardDrink from "@/components/ui/CardDrink";
-import { Drink } from "@/types/Drink";
-import bgDrink from "@/../public/imgs/drinkbg.jpg";
+import { useEffect, useState } from 'react';
+import NavBar from '@/components/ui/NavBar';
+import SearchBarDrink from '@/components/ui/SearchBarDrink';
+import CardDrink from '@/components/ui/CardDrink';
+import { Drink } from '@/types/Drink';
+import bgDrink from '@/../public/imgs/drinkbg.jpg';
 
 const mockDrinks: Drink[] = [
   {
     id: 1,
-    name: "Caipirinha",
-    description: "Clássico brasileiro com limão e cachaça.",
-    difficulty: "Fácil",
+    name: 'Caipirinha',
+    description: 'Clássico brasileiro com limão e cachaça.',
+    difficulty: 'Fácil',
     price: 2,
-    image: "", // Vazio para testar imagem default
+    image: '', // Vazio para testar imagem default
   },
   {
     id: 2,
-    name: "Mojito",
-    description: "Hortelã, rum e toque cítrico refrescante.",
-    difficulty: "Médio",
+    name: 'Mojito',
+    description: 'Hortelã, rum e toque cítrico refrescante.',
+    difficulty: 'Médio',
     price: 3,
-    image: "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
+    image:
+      'https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg',
+  },
+  {
+    id: 3,
+    name: 'Daiquiri',
+    description: 'Rum, limão e açúcar, uma combinação perfeita.',
+    difficulty: 'Fácil',
+    price: 2,
+    image: '', // Vazio para testar imagem default
+  },
+  {
+    id: 4,
+    name: 'Pina Colada',
+    description: 'Abacaxi, coco e rum, um sabor tropical.',
+    difficulty: 'Difícil',
+    price: 4,
+    image:
+      'https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg',
   },
 ];
 
@@ -49,7 +67,7 @@ function Drinks() {
 
     // Forçando o uso do mock
     setDrinks(mockDrinks);
-    console.log("Mock drinks carregados:", mockDrinks);
+    console.log('Mock drinks carregados:', mockDrinks);
   }, []);
 
   return (
@@ -66,7 +84,9 @@ function Drinks() {
 
       <main className="bg-white py-10 px-4 md:px-12">
         {drinks.length === 0 ? (
-          <p className="text-center text-gray-600">Nenhum drink disponível no momento.</p>
+          <p className="text-center text-gray-600">
+            Nenhum drink disponível no momento.
+          </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {drinks.map((drink) => (

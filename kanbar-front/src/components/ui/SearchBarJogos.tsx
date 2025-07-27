@@ -4,7 +4,7 @@ function SearchBarJogos() {
   return (
     <div className="relative w-sm mx-auto mt-20">
       <div className="absolute inset-y-0 left-0 flex items-center bg-gray-300 px-3 rounded-l-md text-gray-700">
-        <Gamepad2  className="w-5 h-5 mr-1" />
+        <Gamepad2 className="w-5 h-5 mr-1" />
         <span className="text-sm font-bold">Jogos</span>
       </div>
 

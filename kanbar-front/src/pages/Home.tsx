@@ -94,7 +94,7 @@ function Home() {
               </p>
 
               <div className="flex items-center justify-start space-x-6 text-white/80">
-                <div className="flex items-center space-x-2"> 
+                <div className="flex items-center space-x-2">
                   <span className="text-lg">{current.price}</span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -123,7 +123,6 @@ function Home() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

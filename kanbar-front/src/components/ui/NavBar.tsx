@@ -15,11 +15,12 @@ function NavBar() {
 
   return (
     <nav className="w-full flex items-center justify-between px-6 py-4 text-white ">
-      <div
-        className="flex items-center w-[140px] h-[40px] cursor-pointer mx-3"
-        onClick={() => navigate('/')}
-      >
-        <img src={logo} alt="Logo do Kanbar" className="h-full object-contain" />
+      <div className="flex items-center w-[140px] h-[40px] cursor-pointer mx-3">
+        <img
+          src={logo}
+          alt="Logo do Kanbar"
+          className="h-full object-contain"
+        />
       </div>
 
       <ul className="hidden md:flex items-center space-x-10 font-bold text-xl tracking-wider">
